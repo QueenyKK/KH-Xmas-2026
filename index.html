@@ -263,7 +263,63 @@
                 border-color: rgba(250, 204, 21, 0.5);
             }
         }
+        /* --- Main Content Transition --- */
+        #main-content {
+            transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
 
+        .hidden-scene {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.1) translateY(-20px);
+        }
+
+        .visible-scene {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+        }
+
+        .initial-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body
+    class="text-white min-h-screen flex flex-col items-center justify-center relative selection:bg-gold-500 selection:text-black">
+
+    <!-- Atmospheric Background Layers -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10" id="bg-orbs">
+        <div
+            class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] animate-float">
+        </div>
+        <div
+            class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[100px] animate-float-delayed">
+       <h1
+                    class="font-holiday text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold text-glow leading-tight py-2 animate-text-reveal whitespace-nowrap">
+                    Merry Christmas
+                </h1>
+        </div>
+    </div>
+
+    <canvas id="snow-container"></canvas>
+  <!-- Crystal Ball Intro Scene -->
+    <div id="intro-scene" class="fixed inset-0 z-50 flex flex-col items-center justify-center visible-scene">
+        <div class="crystal-ball-container animate-float" onclick="enterSite()">
+            <div class="crystal-ball">
+                <div class="ball-inner-light"></div>
+                <!-- Mini particles inside ball -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-60">
+                    <i class="fa-regular fa-snowflake text-4xl text-white animate-spin-slow"></i>
+                </div>
+            </div>
+            <div class="ball-base"></div>
+            <div class="click-hint" text-gold-300 font-medium>Click to Enter </div>
+        </div>
+    </div>
 
   
 
