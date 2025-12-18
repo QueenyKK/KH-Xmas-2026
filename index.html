@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kehua Tech Holiday 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        gold: {
+                            100: '#fff9c4',
+                            200: '#fef08a',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        holiday: ['"Great Vibes"', 'cursive'],
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 10s ease-in-out 2s infinite',
+                        'fade-in-up': 'fadeInUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'glow': 'glow 4s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'text-reveal': 'textReveal 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'christmas-border': 'christmasGlow 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px) scale(0.95)', filter: 'blur(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)', filter: 'blur(0)' },
+                        },
+                        textReveal: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)', filter: 'blur(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
+                        },
+                        glow: {
+                            'from': { filter: 'drop-shadow(0 0 5px rgba(250, 204, 21, 0.2))' },
+                            'to': { filter: 'drop-shadow(0 0 25px rgba(250, 204, 21, 0.6))' },
+                        },
+                        christmasGlow: {
+                            '0%, 100%': {
+                                boxShadow: '0 0 20px rgba(239, 68, 68, 0.5), inset 0 0 10px rgba(239, 68, 68, 0.2)',
+                                borderColor: 'rgba(239, 68, 68, 0.5)'
+                            },
+                            '33%': {
+                                boxShadow: '0 0 20px rgba(34, 197, 94, 0.5), inset 0 0 10px rgba(34, 197, 94, 0.2)',
+                                borderColor: 'rgba(34, 197, 94, 0.5)'
+                            },
+                            '66%': {
+                                boxShadow: '0 0 20px rgba(234, 179, 8, 0.5), inset 0 0 10px rgba(234, 179, 8, 0.2)',
+                                borderColor: 'rgba(234, 179, 8, 0.5)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #020617;
+            background-image:
+                radial-gradient(circle at 50% 0%, #172554 0%, #020617 60%),
+                radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, #0f172a 0%, transparent 50%);
+            overflow-x: hidden;
+            perspective: 1200px;
+        }
+
+        /* Enhanced Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(255, 255, 255, 0.02);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* Premium Gold Text */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #fef9c3 0%, #facc15 40%, #ea580c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(250, 204, 21, 0.15);
+        }
+
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .slogan-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slogan-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(250, 204, 21, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .slogan-item:hover::before {
+            opacity: 1;
+        }
+
+        .slogan-item:hover i {
+            transform: scale(1.1) translateY(-2px);
+            color: #facc15;
+            filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.5));
+        }
+
+        .decorative-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.5), transparent);
+        }
+
+        /* --- Crystal Ball Styles --- */
+        #intro-scene {
+            transition: opacity 1.5s ease;
+        }
+
+        .crystal-ball-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .crystal-ball-container:hover {
+            transform: scale(1.1);
+        }
+
+        .crystal-ball {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 20%, rgba(250, 204, 21, 0.05) 60%, rgba(255, 255, 255, 0.1) 100%);
+            box-shadow:
+                inset 0 0 20px rgba(255, 255, 255, 0.2),
+                inset 10px 10px 20px rgba(255, 255, 255, 0.1),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.1),
+                0 0 30px rgba(250, 204, 21, 0.2);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        .ball-inner-light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #facc15;
+            border-radius: 50%;
+            box-shadow: 0 0 40px 20px rgba(250, 204, 21, 0.4);
+            animation: inner-pulse 2s infinite alternate;
+        }
+
+        .ball-base {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            white-space: nowrap;
+            opacity: 0;
+            animation: fade-in-up 1s 1s forwards;
+        }
+
+        @keyframes inner-pulse {
+            from {
+                box-shadow: 0 0 30px 15px rgba(250, 204, 21, 0.3);
+                opacity: 0.8;
+            }
+
+            to {
+                box-shadow: 0 0 60px 30px rgba(250, 204, 21, 0.6);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 30px rgba(250, 204, 21, 0.2);
+            }
+
+            to {
+                box-shadow: 0 0 50px rgba(250, 204, 21, 0.5);
+                border-color: rgba(250, 204, 21, 0.5);
+            }
+        }
+
+        /* --- Main Content Transition --- */
+        #main-content {
+            transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hidden-scene {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.1) translateY(-20px);
+        }
+
+        .visible-scene {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+        }
+
+        .initial-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body
+    class="text-white min-h-screen flex flex-col items-center justify-center relative selection:bg-gold-500 selection:text-black">
+
+    <!-- Atmospheric Background Layers -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10" id="bg-orbs">
+        <div
+            class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] animate-float">
+        </div>
+        <div
+            class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[100px] animate-float-delayed">
+        </div>
+    </div>
+
+    <canvas id="snow-container"></canvas>
+
+    <!-- Crystal Ball Intro Scene -->
+    <div id="intro-scene" class="fixed inset-0 z-50 flex flex-col items-center justify-center visible-scene">
+        <div class="crystal-ball-container animate-float" onclick="enterSite()">
+            <div class="crystal-ball">
+                <div class="ball-inner-light"></div>
+                <!-- Mini particles inside ball -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-60">
+                    <i class="fa-regular fa-snowflake text-4xl text-white animate-spin-slow"></i>
+                </div>
+            </div>
+            <div class="ball-base"></div>
+            <div class="click-hint">Click to Enter</div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <main id="main-content"
+        class="relative z-20 w-full max-w-5xl p-4 md:p-6 flex flex-col items-center justify-center min-h-[90vh] initial-hidden">
+
+        <!-- Main Card -->
+        <div id="christmas-card"
+            class="glass-card rounded-[2.5rem] px-4 py-8 md:p-16 w-full max-w-3xl text-center flex flex-col items-center relative overflow-hidden animate-fade-in-up animate-christmas-border">
+
+            <!-- Subtle Border Highlight -->
+            <div class="absolute inset-0 border border-white/5 rounded-[2.5rem] pointer-events-none"></div>
+
+            <!-- Top Decoration -->
+            <div class="mb-10 relative">
+                <div class="absolute inset-0 bg-gold-400 blur-[40px] opacity-20 rounded-full"></div>
+                <i class="fa-regular fa-snowflake text-6xl md:text-7xl text-gold-300 relative z-10 animate-glow"></i>
+            </div>
+
+            <!-- Header Text -->
+            <div class="space-y-4 mb-10">
+                <h2 class="font-serif italic text-lg md:text-2xl text-blue-200 tracking-wide opacity-90">Season's
+                    Greetings</h2>
+
+                <h1
+                    class="font-holiday text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-gold text-glow leading-tight py-2 animate-text-reveal whitespace-nowrap">
+                    Merry Christmas
+                </h1>
+            </div>
+
+            <!-- Divider -->
+            <div class="w-2/3 decorative-line mx-auto mb-10"></div>
+
+            <!-- Message -->
+            <p
+                class="font-serif text-gray-300 text-base md:text-xl leading-relaxed mb-12 max-w-2xl mx-auto font-light tracking-wide">
+                May your holidays be illuminated with <span class="text-gold-300 font-medium">innovation</span> and
+                warmth.
+                <br class="hidden md:block">Wishing you a prosperous 2026 filled with reliable connections.
+            </p>
+
+            <!-- Business Solutions -->
+            <div class="w-full mb-10">
+                <div class="text-sm font-bold tracking-[0.3em] text-white/40 uppercase mb-8">Our Business</div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-2xl mx-auto">
+                    <!-- Item 1 - Critical Power -->
+                    <a href="https://www.kehua.com/critical-power.html" target="_blank"
+                        class="slogan-item group p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-gold-500/30 transition-all duration-300">
+                        <i class="fa-solid fa-bolt text-3xl text-slate-400 mb-4 transition-all duration-300"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-300 group-hover:text-white">
+                            Critical Power</h3>
+                    </a>
+
+                    <!-- Item 2 - Data Center -->
+                    <a href="https://www.kehua.com/data-center.html" target="_blank"
+                        class="slogan-item group p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-gold-500/30 transition-all duration-300">
+                        <i class="fa-solid fa-server text-3xl text-slate-400 mb-4 transition-all duration-300"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-300 group-hover:text-white">
+                            Data Center</h3>
+                    </a>
+
+                    <!-- Item 3 - Renewable Energy -->
+                    <a href="https://digitalenergy.kehua.com/" target="_blank"
+                        class="slogan-item group p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-gold-500/30 transition-all duration-300">
+                        <i class="fa-solid fa-solar-panel text-3xl text-slate-400 mb-4 transition-all duration-300"></i>
+                        <h3 class="text-xs font-bold tracking-widest uppercase text-gray-300 group-hover:text-white">
+                            Renewable Energy</h3>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+                class="flex flex-col md:flex-row items-center justify-center gap-6 text-xs text-gray-500 font-medium tracking-wide">
+                <span class="opacity-60">Made With Q</span>
+                <span class="hidden md:block text-white/10">•</span>
+                <a href="https://www.kehua.com" target="_blank"
+                    class="flex items-center gap-2 text-gray-400 hover:text-gold-400 transition-colors group">
+                    Visit Website
+                    <i
+                        class="fa-solid fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform duration-300 text-gold-500"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- Transition Logic ---
+        function enterSite() {
+            const intro = document.getElementById('intro-scene');
+            const main = document.getElementById('main-content');
+
+            // Fade out intro
+            intro.classList.remove('visible-scene');
+            intro.classList.add('hidden-scene');
+
+            // Fade in main
+            setTimeout(() => {
+                main.classList.remove('initial-hidden');
+            }, 300);
+        }
+
+        // --- Enhanced Physics Snow Effect ---
+        const canvas = document.getElementById('snow-container');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        const snowflakes = [];
+        const flakeCount = 150;
+        let mouseX = -1000, mouseY = -1000;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (window.innerWidth > 768) handleTilt(e);
+        });
+
+        class Snowflake {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * -height;
+                this.vy = 0.5 + Math.random() * 1.5;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.3;
+                this.oscillationSpeed = Math.random() * 0.02;
+                this.oscillationOffset = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.y += this.vy;
+                this.x += Math.sin(this.y * 0.01 + this.oscillationOffset) * 0.5 + this.vx;
+
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const forceRadius = 200;
+
+                if (dist < forceRadius) {
+                    const force = (forceRadius - dist) / forceRadius;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force * 4;
+                    this.y += Math.sin(angle) * force * 4;
+                }
+
+                if (this.y > height) this.init();
+                if (this.x > width) this.x = 0;
+                if (this.x < 0) this.x = width;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < flakeCount; i++) snowflakes.push(new Snowflake());
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            snowflakes.forEach(flake => {
+                flake.update();
+                flake.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- Refined 3D Tilt ---
+        const card = document.getElementById('christmas-card');
+        const bgOrbs = document.getElementById('bg-orbs');
+
+        function handleTilt(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            const rX = (0.5 - y) * 8;
+            const rY = (x - 0.5) * 8;
+
+            const rect = card.getBoundingClientRect();
+            const isHovering =
+                e.clientX >= rect.left &&
+                e.clientX <= rect.right &&
+                e.clientY >= rect.top &&
+                e.clientY <= rect.bottom;
+
+            const lift = isHovering ? 'translateY(-10px) scale(1.02)' : 'translateY(0) scale(1)';
+
+            card.style.transform = `perspective(1200px) rotateX(${rX}deg) rotateY(${rY}deg) ${lift}`;
+            card.style.transition = isHovering ? 'transform 0.1s ease-out' : 'transform 0.3s ease-out';
+
+            bgOrbs.style.transform = `translate(${(x - 0.5) * 30}px, ${(y - 0.5) * 30}px)`;
+        }
+
+        document.addEventListener('mouseleave', () => {
+            if (card) card.style.transform = `perspective(1200px) rotateX(0) rotateY(0)`;
+        });
+    </script>
+</body>
+
+</html>
